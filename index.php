@@ -1,3 +1,15 @@
+<?php
+
+if(isset($_POST['password_length']) && !empty($_POST['password_length'])){
+  echo 'Password check';
+}
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
