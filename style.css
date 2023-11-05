@@ -3,6 +3,11 @@ body{
   color: white;
 }
 
+.container_fr{
+  width: 1000px;
+  margin: 0 auto;
+}
+
 .input-w{
   width: 300px;
 }
