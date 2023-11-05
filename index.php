@@ -1,29 +1,24 @@
 <?php
 
+require_once __DIR__ . '/function.php';
+
 $msg = 'Scegliere password con almeno 8 caratteri e massimo 32 caratteri';
-
-$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567891?8%$^+-*/0)[]{}@#_=';
-
-$psw = '';
 
 $custom_alert = 'primary';
 
+$password = '';
+
 if(isset($_POST['password_length']) && !empty($_POST['password_length'])){
   if($_POST['password_length'] > 8 && $_POST['password_length'] < 32){
-    for($c = 0; $c < $_POST['password_length']; $c++){
-      //con un indice random vado a pescare i caratteri all'interno della variabile 'str_shuffle($chars)' in modo da ottenere una sequenza randomica
-      $index = rand(0, strlen(str_shuffle($chars)) - 1);
-      $char = $chars[$index];
-      $psw .= $char;
-      $msg = "La tua password è: <strong>$psw</strong>";
+      $password = psw_generator($_POST['password_length']);
+      $msg = "La tua password è: <strong>$password</strong>";
       $custom_alert = 'success';
     }
+    else{
+      $msg = 'La lunghezza deve essere compresa tra 8 e 32';
+      $custom_alert = 'danger';
+    }
   }
-  else{
-    $msg = 'La lunghezza deve essere compresa tra 8 e 32';
-    $custom_alert = 'danger';
-  }
-}
 
 ?>
 
